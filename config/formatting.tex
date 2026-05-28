@@ -1,0 +1,16 @@
+%% Formatting and Page Layout Configuration
+
+% enumitem: Enhanced enumeration and list formatting
+\usepackage{enumitem}
+
+% scrlayer-scrpage: Header and footer configuration with KOMA Script
+\usepackage{scrlayer-scrpage}
+
+% microtype: Optical margin adjustment and improved typography
+\usepackage{microtype}
+
+% hyperref: Hyperlinks and PDF properties (must be near end of preamble)
+\usepackage[colorlinks=false, pdfborder={0 0 0}, breaklinks=true, pdfpagelabels=true]{hyperref}
+
+% Custom footnote formatting
+\deffootnote{1em}{1em}{\makebox[1em][l]{\thefootnotemark}}

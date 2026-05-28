@@ -1,0 +1,20 @@
+%% Floats and Captions Configuration
+
+% floatrow: Multiple floats side-by-side and caption positioning
+\usepackage[facing=yes]{floatrow}
+
+% caption: Enhanced caption formatting
+\usepackage[labelfont=bf,sf,font=small,labelsep=space,format=plain]{caption}
+
+% subcaption: Sub-figures and sub-tables support
+\usepackage{subcaption}
+
+% Figure caption positioning (inside, top)
+\floatsetup[figure]{capbesideposition={inside,top}}
+
+% Table caption positioning with plain style
+\floatsetup[table]{capbesideposition={inside,top},style=plaintop}
+
+% Float command shortcuts for side-by-side captions
+\renewfloatcommand{fcapside}{figure}[\capbeside][\FBwidth]
+\newfloatcommand{tcapside}{table}[\capbeside][\FBwidth]

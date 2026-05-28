@@ -1,0 +1,77 @@
+\documentclass[
+    twoside=false,
+    chapterprefix=false,
+    fontsize=11pt,
+    paper=a4,
+    bibliography=totoc
+]{scrbook}
+
+%% ===== PACKAGE CONFIGURATION FILES =====
+%% Load all package setups from config directory (order matters!)
+
+% Fonts and encoding
+\input{config/fonts.tex}
+
+% Language and graphics
+\input{config/graphics.tex}
+
+% Mathematics packages
+\input{config/math.tex}
+
+% Technical drawing and code
+\input{config/technical.tex}
+
+% Floats and captions
+\input{config/floats.tex}
+
+% Formatting and page layout
+\input{config/formatting.tex}
+
+% Bibliography and glossaries (near end of preamble)
+\input{config/bibliography.tex}
+
+% Custom commands
+\input{config/custom.tex}
+
+%% ===== DOCUMENT BODY =====
+
+\begin{document}
+
+% Frontmatter: Pages with roman numerals
+\frontmatter
+\pagestyle{empty}
+
+% 1. Title page
+\include{chapters/00_title}
+
+% 2. Abstract
+\include{chapters/01_abstract}
+
+% 3. Table of contents
+\pagestyle{scrplain}
+\pagenumbering{roman}
+\include{chapters/02_toc}
+
+% Mainmatter: Pages with arabic numerals
+\mainmatter
+\pagestyle{scrheadings}
+
+% 4. Main chapters content
+\include{chapters/10_chapters}
+
+% Backmatter: Bibliography and indices
+\appendix
+
+% 5. Bibliography
+\printbibliography[title={Literaturverzeichnis}]
+
+% 6. Acronyms
+\printglossary[type=\acronymtype, title=Abkürzungsverzeichnis]
+
+% 7. Symbols
+\printglossary[type=symbols, title=Symbolverzeichnis]
+
+% 8. Appendix chapters
+\include{chapters/99_append}
+
+\end{document}

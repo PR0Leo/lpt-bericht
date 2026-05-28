@@ -1,0 +1,79 @@
+%% Bibliography and Glossaries Configuration
+
+% csquotes: Context-sensitive quotation marks (required with babel + biblatex)
+\usepackage{csquotes}
+
+% biblatex with IEEE style: Modern bibliography management
+\usepackage[
+    style=ieee,
+    backend=biber,
+    natbib=true,
+    hyperref=true
+]{biblatex}
+
+% Load bibliography database
+\addbibresource{config/quellen.bib}
+
+% glossaries: Acronyms and symbols lists
+% Options: toc (in TOC), section=chapter (separate chapters), nonumberlist (no numbers)
+% acronym (extra acronym list), symbols (extra symbol list)
+\usepackage[toc, section=chapter, nonumberlist, acronym, symbols]{glossaries}
+
+% Style for glossaries: long-short format with hyperlinks
+\setglossarystyle{long}
+
+% Initialize glossaries (required for all entries)
+\makeglossaries
+
+% ===== ACRONYMS / ABKÜRZUNGEN =====
+% Format: \newacronym{key}{short}{long}
+% Usage in text: \gls{key} = long (short) on first use, then (short)
+% Usage after first: \gls{key} = (short)
+\newacronym{ide}{IDE}{Integrated Development Environment}
+\newacronym{ocxo}{OCXO}{Oven Controlled Crystal Oscillator}
+\newacronym{ic}{IC}{Integrated Circuits (Integrierte Schaltkreise)}
+\newacronym{ntc}{NTC}{Negative Temperature Coefficient (Heißleiter)}
+\newacronym{gpio}{GPIO}{General Purpose Input/Output}
+\newacronym{usbc}{USB-C}{Universal Serial Bus Type-C}
+\newacronym{ufp}{UFP}{Upstream Facing Port}
+\newacronym{adc}{ADC}{Analog-to-Digital Converter (Analog-Digital-Wandler)}
+\newacronym{rms}{RMS}{Root Mean Square (Quadratischer Mittelwert)}
+\newacronym{cmos}{CMOS}{Complementary Metal-Oxide-Semiconductor}
+
+% ===== SYMBOLS / SYMBOLVERZEICHNIS =====
+% Format: \newglossaryentry{key}{type=symbols, name=Symbol, description=..., symbol=Unit}
+% Usage in text: \gls{voltage} or \glssymbol{voltage} for unit only
+\newglossaryentry{voltage}{
+    type=symbols,
+    name=$U$,
+    description={Elektrische Spannung; Potentialdifferenz zwischen zwei Punkten},
+    symbol={V}
+}
+
+\newglossaryentry{resistance}{
+    type=symbols,
+    name=$R$,
+    description={Elektrischer Widerstand; Widerstand gegen Stromfluss},
+    symbol={$\Omega$}
+}
+
+\newglossaryentry{current}{
+    type=symbols,
+    name=$I$,
+    description={Elektrische Stromstärke; Menge der Ladung pro Zeiteinheit},
+    symbol={A}
+}
+
+\newglossaryentry{power}{
+    type=symbols,
+    name=$P$,
+    description={Elektrische Leistung; Energieumsatz pro Zeiteinheit},
+    symbol={W}
+}
+
+\newglossaryentry{frequency}{
+    type=symbols,
+    name=$f$,
+    description={Frequenz; Anzahl der Schwingungen pro Sekunde},
+    symbol={Hz}
+}

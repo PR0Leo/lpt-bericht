@@ -1,0 +1,26 @@
+%% Mathematics Packages Configuration
+
+% mathtools: Enhanced amsmath for professional math typesetting
+\usepackage{mathtools}
+
+% bm: Bold math symbols
+\usepackage{bm}
+
+% fixmath: Fixes various math font issues
+\usepackage{fixmath}
+
+% amsfonts: Mathematical fonts (blackboard bold, etc.)
+\usepackage{amsfonts}
+
+% siunitx: Scientific units and quantities formatting
+\usepackage{siunitx}
+
+\sisetup{
+  locale = DE,           % Setzt Komma als Trenner und passt Abstände an
+  per-mode = symbol,     % Schreibt m/s statt m s^-1
+  separate-uncertainty,  % Erlaubt Angaben wie \qty{10 +- 0,1}{\ohm}
+  range-phrase = { bis },% Für Bereiche: \numrange{10}{20} -> 10 bis 20
+  group-separator = {.},   % Punkt als Tausendertrenner (im Deutschen üblich)
+  group-digits = integer,  % Gruppiert nur Vorkommastellen (Standard: all)
+  group-minimum-digits = 4
+}
