@@ -10,83 +10,107 @@ Der vorliegende Bericht dokumentiert diese Projektschritte systematisch und glie
 \end{itemize}
 
 Der Bericht startet im nachfolgenden Kapitel mit der Auslegung und Fertigung der ersten Leiterplatte zur Ermittlung eines Leiterbahnwiderstands.
+\subsection{Berechnung der Leiterbahnlänge}
+Zur experimentellen Überprüfung des spezifischen Widerstands von Kupfer wird auf einer Leiterplatte eine gezielte Leiterbahngeometrie realisiert. Der elektrische Gleichstromwiderstand $R$ eines gewickelten oder geradlinigen Leiterbahnabschnitts berechnet sich nach der grundlegenden physikalischen Beziehung:
+\begin{equation}
+    R = \rho \cdot \frac{l}{A}
+\end{equation}
+Hierbei bezeichnet $R$ den elektrischen Widerstand in Ohm ($\Omega$), $\rho$ den spezifischen elektrischen Widerstand des Leitermaterials, $l$ die Leiterbahnlänge in Metern ($\text{m}$) und $A$ die Querschnittsfläche der Leiterbahn in Quadratmillimetern ($\text{mm}^2$).
+
+Durch Umstellung der Gleichung nach der gesuchten Leiterbahnlänge $l$ ergibt sich:
+\begin{equation}
+    l = \frac{R \cdot A}{\rho}
+\end{equation}
+Für die Auslegung werden die folgenden Parameter zugrunde gelegt: Der spezifische Widerstand von Kupfer beträgt $\rho = 0{,}0178 \, \frac{\Omega \cdot \text{mm}^2}{\text{m}}$, der angestrebte Zielwiderstand liegt bei $R = 0{,}2 \, \Omega$ (also $200 \, \mathrm{m}\Omega$), die Leiterbahnbreite beträgt $b = 0{,}475 \, \text{mm}$ und die Kupferschichtdicke (Standard-Kaschierung) beträgt $h = 0{,}035 \, \text{mm}$ ($35 \, \mu\text{m}$).
+
+Die Querschnittsfläche $A$ des rechteckigen Leiterbahnprofils berechnet sich zu:
+\begin{equation}
+    A = b \cdot h = 0{,}475 \, \text{mm} \cdot 0{,}035 \, \text{mm} = 0{,}016625 \, \text{mm}^2
+\end{equation}
+
+Einsetzen der Werte in die umgestellte Formel liefert die erforderliche Leiterbahnlänge $l$:
+\begin{equation}
+    l = \frac{0{,}2 \, \Omega \cdot 0{,}016625 \, \text{mm}^2}{0{,}0178 \, \frac{\Omega \cdot \text{mm}^2}{\text{m}}} \approx 0{,}1868 \, \text{m}
+\end{equation}
+
+Die berechnete Leiterbahnlänge von ca. $18{,}7 \, \text{cm}$ wird im EDA-Programm KiCad als mäanderförmige Struktur auf dem Layout untergebracht. Abbildung~\ref{fig:kicad-leiterbahn} zeigt das fertige Leiterplattendesign.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./figures/kicad-leiterbahnwiderstand.jpg}
+    \caption{KICAD Leiterplattendesign eines Leiterbahnwiderstand mit 200 $\mathrm{m}\Omega$}
+    \label{fig:kicad-leiterbahn}
+\end{figure}
+
+Im Design sind vier spezifische Messpads integriert, welche die Durchführung einer Präzisions-Vierleitermessung ermöglichen. Zudem wurde an der Seite ein zusätzlicher Teststreifen platziert, um nach dem Ätzvorgang die Fertigungsqualität und die Maßhaltigkeit der Strukturbreiten optisch sowie messtechnisch überprüfen zu können.
 \section{Fertigungsprozess der einlagigen Leiterplatte}
 Die Nassfertigung der einlagigen Leiterplatte im Labor erfordert eine exakte Abfolge chemischer und optischer Verfahrensschritte. Die Abbildungen~\ref{fig:lpcb-1} bis \ref{fig:lpcb-9} dokumentieren die einzelnen Prozessschritte schrittweise:
 
 \begin{enumerate}
     \item \textbf{Optische Kontrolle:} Zunächst erfolgt eine sorgfältige optische Überprüfung der gedruckten Fotoschablone auf Korrektheit und Deckungskraft (Abb.~\ref{fig:lpcb-1}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[angle=90, width=0.45\textwidth]{./figures/lpcb-optische-kontrolle.jpg}
+        \caption{Optische Kontrolle der Schablone.}
+        \label{fig:lpcb-1}
+    \end{figure}
     \item \textbf{Belichtung:} Unter Anwendung von Schwarzlicht (UV-Strahlung) wird der Fotolack der kupferkaschierten Platine durch die Schablone hindurch belichtet, wodurch der Photoresist partiell chemisch verändert wird (Abb.~\ref{fig:lpcb-2}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-led-beleuchtung.jpg}
+        \caption{Erstellung des Photoresist durch schwarzlichtbeleuchtung des Photolacks unter der Schablone.}
+        \label{fig:lpcb-2}
+    \end{figure}
     \item \textbf{Entwicklung:} In einem Entwicklerbad aus Natronlauge ($\text{NaOH}$) werden die belichteten Bereiche des negativen Photoresists ausgewaschen (Abb.~\ref{fig:lpcb-3}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-nach-natronlauge.jpg}
+        \caption{Entfernen des negative Photoresists durch Natronlauge.}
+        \label{fig:lpcb-3}
+    \end{figure}
     \item \textbf{Ätzprozess:} Das freigelegte Kupfer wird im Ätzbad mittels Eisen(III)-chlorid ($\text{FeCl}_3$) chemisch abgetragen, während der verbliebene Photoresist die darunterliegenden Leiterbahnen schützt (Abb.~\ref{fig:lpcb-4}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-in-eisen3chlorid.jpg}
+        \caption{Wegätzen des Kupfers durch Eisen3Chlorid.}
+        \label{fig:lpcb-4}
+    \end{figure}
     \item \textbf{Reinigung I:} Die geätzte Platinengrundplatte wird gründlich mit Spiritus gereinigt, um Ätzrückstände zu neutralisieren (Abb.~\ref{fig:lpcb-5}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-reinigung-mit-spiritus.jpg}
+        \caption{Reinigung der geätzen Leiterlpatte mit Spiritus}
+        \label{fig:lpcb-5}
+    \end{figure}
     \item \textbf{Strippen des Fotoresists:} Der verbliebene restliche Fotoresist auf den Leiterbahnen wird mechanisch mit feiner Stahlwolle entfernt (Abb.~\ref{fig:lpcb-6}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-fotoresist-entfernen.jpg}
+        \caption{Entfernen des übrigen Fotoresists durch Stahlwolle.}
+        \label{fig:lpcb-6}
+    \end{figure}
     \item \textbf{Flussmittelauftrag:} Zur Vermeidung von Reoxidation und zur Verbesserung der späteren Löteigenschaften wird die Platine mit einer Schutzschicht aus Flussmittel beschichtet (Abb.~\ref{fig:lpcb-7}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-auftragen-von-flussmittel.jpg}
+        \caption{Beschichtung der Leiterplatte mit Flussmittel.}
+        \label{fig:lpcb-7}
+    \end{figure}
     \item \textbf{Vereinzelung:} Das Abtrennen der einzelnen Leiterplattenkonturen erfolgt präzise mittels eines Hebelschneiders (Abb.~\ref{fig:lpcb-8}).
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-abschneiden.jpg}
+        \caption{Abtrennen der einzelnen Leiterplatten durch Hebelschneider.}
+        \label{fig:lpcb-8}
+    \end{figure}
     \item \textbf{Finales Produkt:} Abbildung~\ref{fig:lpcb-9} zeigt die fertig produzierte Platine.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.45\textwidth]{./figures/lpcb-fertig.jpg}
+        \caption{Fertig produzierte Leiterplatte.}
+        \label{fig:lpcb-9}
+    \end{figure}
 \end{enumerate}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-optische-kontrolle.jpg}
-    \caption{Optische Kontrolle der Schablone.}
-    \label{fig:lpcb-1}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-led-beleuchtung.jpg}
-    \caption{Erstellung des Photoresist durch schwarzlichtbeleuchtung des Photolacks unter der Schablone.}
-    \label{fig:lpcb-2}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-nach-natronlauge.jpg}
-    \caption{Entfernen des negative Photoresists durch Natronlauge.}
-    \label{fig:lpcb-3}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-in-eisen3chlorid.jpg}
-    \caption{Wegätzen des Kupfers durch Eisen3Chlorid.}
-    \label{fig:lpcb-4}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-reinigung-mit-spiritus.jpg}
-    \caption{Reinigung der geätzen Leiterlpatte mit Spiritus}
-    \label{fig:lpcb-5}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-fotoresist-entfernen.jpg}
-    \caption{Entfernen des übrigen Fotoresists durch Stahlwolle.}
-    \label{fig:lpcb-6}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-auftragen-von-flussmittel.jpg}
-    \caption{Beschichtung der Leiterplatte mit Flussmittel.}
-    \label{fig:lpcb-7}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-abschneiden.jpg}
-    \caption{Abtrennen der einzelnen Leiterplatten durch Hebelschneider.}
-    \label{fig:lpcb-8}
-\end{figure}
-
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.45\textwidth]{./figures/lpcb-fertig.jpg}
-    \caption{Fertig produzierte Leiterplatte.}
-    \label{fig:lpcb-9}
-\end{figure}
 \subsection{Vierleiter-Messung zur Widerstandsbestimmung}
 Zur exakten Ermittlung des realen Leiterbahnwiderstandes wird eine messtechnische Charakterisierung durch Erfassung einer $U$-$I$-Kennlinie durchgeführt. Zur Vorbereitung der Messung wurden zunächst Lötösen an den dafür vorgesehenen vier Kontaktpads aufgelötet. Abbildung~\ref{fig:vierleiter} stellt den Messaufbau dar.
 
@@ -253,9 +277,8 @@ Die Assembly-Umgebung von FreeCAD bietet wesentliche Vorteile für die Qualität
 Im konkreten Projektverlauf machte die visuelle Kontrolle innerhalb der Baugruppe (Abbildung~\ref{fig:assembly}) auf einen kritischen Fehler aufmerksam: Die Masterskizze des Gehäuses war aufgrund eines Vermessungsfehlers in der Höhe zu groß dimensioniert worden. Durch die Baugruppenprüfung konnte der Fehler vor der physischen Prototypenfertigung identifiziert und behoben werden. In Anlehnung an die in der Fertigungstechnik etablierte \textit{Zehnerregel der Fehlerkosten} (Rule of Ten), nach der sich die Fehlerbehebungskosten mit jeder Wertschöpfungsstufe um den Faktor 10 erhöhen, verhinderte diese frühzeitige Korrektur unnötige Kosten und Materialverschwendung.
 
 \section{Fazit}
-Das Praktikum im Sommersemester 2026 bot eine wertvolle Ergänzung zu den Vorlesungen in \textit{Einführung in die Aufbau- und Verbindungstechnik} (AVT) sowie \textit{Leiterplattentechnik} (LPT P). Über die im Bericht behandelten Schwerpunkte hinaus vermittelten die Lehrveranstaltungen wesentliche theoretische Grundlagen zu weiteren AVT-Themen – wie beispielsweise SMD-Bestückungs- und Reflow-Lötverfahren, Dick- und Dünnschichttechnologien, Zuverlässigkeits- und Fehlermechanismen sowie thermischem Management und Materialeigenschaften komplexer Substrate.
-
-Das Sammeln direkter praktischer Laborerfahrung erwies sich als essenziell, um ein fundiertes Verständnis für fertigungstechnische Toleranzen, Materialverhalten und reale Entwurfsanforderungen zu entwickeln. Es war ein großer Erfolg, die erworbenen interdisziplinären Kompetenzen – von der mathematischen Dimensionierung über das EDA-Layout bis hin zur mechanischen Auslegung der Einzelteile (siehe Abbildung~\ref{fig:bauteile}) – in einem einzigen, geschlossenen Projekt zu bündeln. Das Ergebnis ist ein voll funktionsfähiges Endprodukt (siehe Abbildung~\ref{fig:taschenlampe}), das den erfolgreichen Transfer von theoretischem Vorlesungswissen in die Praxis demonstriert.
+Das Praktikum war eine wertvolle Ergänzung zu den Vorlesungen in \textit{Einführung in die Aufbau- und Verbindungstechnik}sowie \textit{Leiterplattentechnik}. Über die im Bericht behandelten Schwerpunkte hinaus vermittelten die Lehrveranstaltungen wesentliche theoretische Grundlagen zu weiteren AVT-Themen – wie beispielsweise SMD-Bestückungs- und Reflow-Lötverfahren, thermischem Management, Materialeigenschaften von Substraten, etc.
+Die praktische Erfahrung im Labor war besonders wertvoll. Es war ein wichtiger Schritt, die gelernten Fähigkeiten von den Berechnungen über das Platinenlayout bis hin zur mechanischen Konstruktion der Einzelteile (siehe Abbildung~\ref{fig:bauteile}) in einem konkreten Projekt zusammenzuführen. Am Ende steht ein voll funktionsfähiges Produkt (siehe Abbildung~\ref{fig:taschenlampe}), das zeigt, wie die Theorie aus der Vorlesung erfolgreich in der Praxis angewendet wird.
 
 \begin{figure}[htbp]
     \centering
