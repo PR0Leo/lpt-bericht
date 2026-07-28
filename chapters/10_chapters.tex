@@ -3,11 +3,11 @@ Im Rahmen der Lehrveranstaltungen \textit{Einführung in die Aufbau- und Verbind
 
 Der vorliegende Bericht dokumentiert diese Projektschritte systematisch und gliedert sich wie folgt:
 
-\section{Zielsetzung und Aufbau des Kapitels}
+\section{Zielsetzung und Aufbau des Berchits}
 \begin{itemize}
-    \item \textbf{Kapitel 1 (Fertigung einer Leiterplatte mit Leiterbahnwiderstand):} Behandelt die theoretische Berechnung einer Leiterbahngeometrie zur Erzielung eines definierten Widerstands, den nasschemischen Herstellungsprozess einer einlagigen Platine im Labor sowie die anschließende messtechnische Überprüfung mittels Vierleitermessung.
-    \item \textbf{Kapitel 2 (KiCad-Einführung anhand einer Taschenlampe):} Vermittelt die übergeordneten Zusammenhänge der EDA-Software KiCad am Beispiel einer LED-Taschenlampe. Der Fokus liegt auf dem Zusammenspiel von Symbol- und Footprint-Editor, den Entwurfsregeln (DRC) sowie praxisorientierten Layout-Entscheidungen.
-    \item \textbf{Kapitel 3 (Gehäusekonstruktion in FreeCAD):} Beschreibt die dreidimensionale Mechanikkonstruktion eines passgenauen Gehäuses für den 3D-Druck, Grundprinzipien der parametrischen Modellierung sowie die Baugruppenvalidierung zur Vermeidung fehlerhafter Prototypen.
+    \item \textbf{Kapitel 2 (Fertigung einer Leiterplatte mit Leiterbahnwiderstand):} Behandelt die theoretische Berechnung einer Leiterbahngeometrie zur Erzielung eines definierten Widerstands, den nasschemischen Herstellungsprozess einer einlagigen Platine im Labor sowie die anschließende messtechnische Überprüfung mittels Vierleitermessung.
+    \item \textbf{Kapitel 3 (KiCad-Einführung anhand einer Taschenlampe):} Vermittelt die übergeordneten Zusammenhänge der EDA-Software KiCad am Beispiel einer LED-Taschenlampe. Der Fokus liegt auf dem Zusammenspiel von Symbol- und Footprint-Editor, den Entwurfsregeln (DRC) sowie praxisorientierten Layout-Entscheidungen.
+    \item \textbf{Kapitel 4 (Gehäusekonstruktion in FreeCAD):} Beschreibt die dreidimensionale Mechanikkonstruktion eines passgenauen Gehäuses für den 3D-Druck, Grundprinzipien der parametrischen Modellierung sowie die Baugruppenvalidierung zur Vermeidung fehlerhafter Prototypen.
 \end{itemize}
 
 Der Bericht startet im nachfolgenden Kapitel mit der Auslegung und Fertigung der ersten Leiterplatte zur Ermittlung eines Leiterbahnwiderstands.
@@ -75,14 +75,14 @@ Die Nassfertigung der einlagigen Leiterplatte im Labor erfordert eine exakte Abf
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.45\textwidth]{./figures/lpcb-in-eisen3chlorid.jpg}
-        \caption{Wegätzen des Kupfers durch Eisen3Chlorid.}
+        \caption{Wegätzen des Kupfers durch Eisen(III)-chlorid.}
         \label{fig:lpcb-4}
     \end{figure}
     \item \textbf{Reinigung I:} Die geätzte Platinengrundplatte wird gründlich mit Spiritus gereinigt, um Ätzrückstände zu neutralisieren (Abb.~\ref{fig:lpcb-5}).
     \begin{figure}[H]
         \centering
         \includegraphics[width=0.45\textwidth]{./figures/lpcb-reinigung-mit-spiritus.jpg}
-        \caption{Reinigung der geätzen Leiterlpatte mit Spiritus}
+        \caption{Reinigung der geätzen Leiterlpatte mit Spiritus.}
         \label{fig:lpcb-5}
     \end{figure}
     \item \textbf{Strippen des Fotoresists:} Der verbliebene restliche Fotoresist auf den Leiterbahnen wird mechanisch mit feiner Stahlwolle entfernt (Abb.~\ref{fig:lpcb-6}).
@@ -158,7 +158,7 @@ Um diesen Prozess zu automatisieren und Fehlschaltungen zu vermeiden, verwendet 
     \begin{figure}[htbp]
         \centering
         \includegraphics[width=0.8\textwidth]{./figures/footprint-editor-und-zuweisung.jpg}
-        \caption{selbsterstellte Bibliothek mit Footprint und Footprint zuweisung zu Symbol.}
+        \caption{Selbsterstellte Bibliothek mit Footprint und Footprint zuweisung zu Symbol.}
         \label{fig:footprint-editor}
     \end{figure}
     Durch die explizite Zuweisung von Footprints zu den jeweiligen Schaltplansymbolen (Abbildung~\ref{fig:footprint-editor}) werden beim Übergang ins Layout alle benötigten Bauformen mittels \textit{Forward Annotation} automatisch geladen und die logischen Netzverbindungen (Ratsnest) generiert.
@@ -168,7 +168,7 @@ Um diesen Prozess zu automatisieren und Fehlschaltungen zu vermeiden, verwendet 
 Über den Stack-Up-Editor (Konfiguration des Lagenaufbaus) sowie die Definition globaler Signalklassen (Net Classes) im Schaltplan werden Parameter wie minimale Leiterbahnbreiten und Mindestabstände festgelegt. Während der Layoutphase überprüft der \textit{Design Rule Checker} (DRC) kontinuierlich, ob alle elektrischen Verbindungen normgerecht geroutet sind und keine Abstandsverletzungen vorliegen. Dies garantiert die elektrische Funktion und die Herstellbarkeit der Leiterplatte.
 
 \section{Schaltplanentwurf der Taschenlampe}
-Die primäre Herausforderung bei der Erstellung des Schaltplans liegt in der korrekten Umsetzung der Schaltungslogik, einer gründlichen Bauteilrecherche sowie der exakten Abstimmung aller Komponenten hinsichtlich Betriebsspannung, maximaler Strombelastbarkeit und Verlustleistung. Abbildung~\ref{fig:schaltplan-taschenlampe} zeigt den fertiggestellten Schaltplan der Taschenlampe.
+Die primäre Herausforderung bei der Erstellung des Schaltplans liegt in der korrekten Umsetzung der Schaltungslogik, einer gründlichen Bauteilrecherche sowie der exakten Abstimmung aller Komponenten hinsichtlich Betriebsspannung und maximaler Strombelastbarkeit. Abbildung~\ref{fig:schaltplan-taschenlampe} zeigt den fertiggestellten Schaltplan der Taschenlampe.
 
 \begin{figure}[htbp]
     \centering
@@ -256,14 +256,14 @@ Abbildung~\ref{fig:housing-extrudes} illustriert dies am Gehäuse der Taschenlam
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{./figures/lid-cut-out.jpg}
-    \caption{Abbrundung der Verstärkung}
+    \caption{Abrundung der Verstärkung.}
     \label{fig:lid-cut-out}
 \end{figure}
 
 Ausgehend von einer bestehenden Skizze wird zunächst eine quadratische Eckverstärkung extruiert (Abbildung~\ref{fig:lid-extrude}). In einem darauffolgenden Schritt wird von der Seite her ein Cut-out durchgeführt, um die Verstärkung abzurunden (Abbildung~\ref{fig:lid-cut-out}).
 
 \section{Baugruppe (Assembly) und Fehlerkorrektur}
-Die Assembly-Umgebung von FreeCAD bietet wesentliche Vorteile für die Qualitätskontrolle:
+Die Assembly-Umgebung von FreeCAD bietet wesentliche Vorteile:
 \begin{itemize}
     \item Gleichzeitige Visualisierung mehrerer Einzelkörper und Baugruppen im Raum.
     \item Definition von Verknüpfungen und geometrischen Abhängigkeiten zwischen den Körpern.
@@ -280,7 +280,7 @@ Die Assembly-Umgebung von FreeCAD bietet wesentliche Vorteile für die Qualität
 Im konkreten Projektverlauf machte die visuelle Kontrolle innerhalb der Baugruppe (Abbildung~\ref{fig:assembly}) auf einen kritischen Fehler aufmerksam: Die Masterskizze des Gehäuses war aufgrund eines Vermessungsfehlers in der Höhe zu groß dimensioniert worden. Durch die Baugruppenprüfung konnte der Fehler vor der physischen Prototypenfertigung identifiziert und behoben werden. In Anlehnung an die in der Fertigungstechnik etablierte \textit{Zehnerregel der Fehlerkosten} (Rule of Ten), nach der sich die Fehlerbehebungskosten mit jeder Wertschöpfungsstufe um den Faktor 10 erhöhen, verhinderte diese frühzeitige Korrektur unnötige Kosten und Materialverschwendung.
 
 \chapter{Fazit}
-Das Praktikum war eine wertvolle Ergänzung zu den Vorlesungen in \textit{Einführung in die Aufbau- und Verbindungstechnik}sowie \textit{Leiterplattentechnik}. Über die im Bericht behandelten Schwerpunkte hinaus vermittelten die Lehrveranstaltungen wesentliche theoretische Grundlagen zu weiteren AVT-Themen – wie beispielsweise SMD-Bestückungs- und Reflow-Lötverfahren, thermischem Management, Materialeigenschaften von Substraten, etc.
+Das Praktikum war eine wertvolle Ergänzung zu den Vorlesungen in \textit{Einführung in die Aufbau- und Verbindungstechnik} sowie \textit{Leiterplattentechnik}. Über die im Bericht behandelten Schwerpunkte hinaus vermittelten die Lehrveranstaltungen wesentliche theoretische Grundlagen zu weiteren AVT-Themen – wie beispielsweise SMD-Bestückungs- und Reflow-Lötverfahren, thermischem Management, Materialeigenschaften von Substraten, etc.
 Die praktische Erfahrung im Labor war besonders wertvoll. Es war ein wichtiger Schritt, die gelernten Fähigkeiten von den Berechnungen über das Platinenlayout bis hin zur mechanischen Konstruktion der Einzelteile (siehe Abbildung~\ref{fig:bauteile}) in einem konkreten Projekt zusammenzuführen. Am Ende steht ein voll funktionsfähiges Produkt, das zeigt, wie die Theorie aus der Vorlesung erfolgreich in der Praxis angewendet wird.
 
 \begin{figure}[htbp]
