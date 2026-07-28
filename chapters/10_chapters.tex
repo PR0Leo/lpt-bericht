@@ -1,38 +1,272 @@
 \chapter{Einführung}
-Die Vorlesung "Einführung in Aufbau- und Verbindungstechnik und Leiterplattentechnik Praktikum" beschäftigt sich mit den Entwerfen, Bestücken, Vermessen von Leiterplatten und der tiefgreifenden Theorie. Der vorliegende Text berichtet über die praktischen Geschehnisse. 
+Im Rahmen der Lehrveranstaltungen \textit{Einführung in die Aufbau- und Verbindungstechnik} (AVT) sowie dem \textit{Leiterplattentechnik Praktikum} (LPT P) steht das praktische Verstehen und Anwenden des durchgängigen Produktentwicklungsprozesses elektronischer Baugruppen im Vordergrund. Ziel ist es, theoretische elektrotechnische Grundlagen durch die eigenständige Umsetzung mehrerer praxisnaher Projekte zu vertiefen – von der mathematischen Dimensionierung über den EDA- und CAD-Entwurf bis hin zur fertigen Baugruppe samt Gehäuse.
 
-Die weiteren Bewertungskriterien sind:
+Der vorliegende Bericht dokumentiert diese Projektschritte systematisch und gliedert sich wie folgt:
 
-- Nachweis der KiCad-Designs (Screenshots -> es sollte erkennbar sein, dass es Ihre eigene Arbeit ist, d.h. das Namenskürzel sollte erkennbar sein)
-
-- Kurze Beschreibung der Fertigungsprozesses der Leiterplatten
-
-- Kurze Beschreibung der Bestückungsprozesse der Leiterplatten
-
-- Die Messungen Ihrer Widerstands-Leiterplatten (optisch & elektrisch)
-
-- Eine Diskussion zur Interpretation dieser Messergebnisse
-
-- Ein Nachweis der fertig gestellten Platine(n), z.B. in Form von Fotos der fertigen Taschenlampe/Radio
-
-- falsche Inhalte führen zu Punktabzug (z.B. falsche Ätzlösung)
-
-\chapter(Leiterbahnwiderstand)
-Die erste Aufgabe war es ein Leiterbahnwiderstand mit der Software KiCad zu designen. Mehr zu KiCad in Abschnitt 2 \ref(sec:taschenlampe).
-Dabei wurden folgende Werte vorgegeben: 
 \begin{itemize}
-    \item 
+    \item \textbf{Kapitel 1 (Fertigung einer Leiterplatte mit Leiterbahnwiderstand):} Behandelt die theoretische Berechnung einer Leiterbahngeometrie zur Erzielung eines definierten Widerstands, den nasschemischen Herstellungsprozess einer einlagigen Platine im Labor sowie die anschließende messtechnische Überprüfung mittels Vierleitermessung.
+    \item \textbf{Kapitel 2 (KiCad-Einführung anhand einer Taschenlampe):} Vermittelt die übergeordneten Zusammenhänge der EDA-Software KiCad am Beispiel einer LED-Taschenlampe. Der Fokus liegt auf dem Zusammenspiel von Symbol- und Footprint-Editor, den Entwurfsregeln (DRC) sowie praxisorientierten Layout-Entscheidungen.
+    \item \textbf{Kapitel 3 (Gehäusekonstruktion in FreeCAD):} Beschreibt die dreidimensionale Mechanikkonstruktion eines passgenauen Gehäuses für den 3D-Druck, Grundprinzipien der parametrischen Modellierung sowie die Baugruppenvalidierung zur Vermeidung fehlerhafter Prototypen.
 \end{itemize}
-\section(Designe)
 
-\section(Fertigungsprozess)
-\section(Messung des Leiterbahnwiderstandes)
-\section(Interpretation)
-\chapter(Taschenlampe)
-\label(sec:taschenlampe)
-\section(KiCad Library)
-\section(KiCad Schematic)
-\section(KiCad Layout)
-\section(Bestückungsprozess)
-\chapter(Radio)
+Der Bericht startet im nachfolgenden Kapitel mit der Auslegung und Fertigung der ersten Leiterplatte zur Ermittlung eines Leiterbahnwiderstands.
+\section{Fertigungsprozess der einlagigen Leiterplatte}
+Die Nassfertigung der einlagigen Leiterplatte im Labor erfordert eine exakte Abfolge chemischer und optischer Verfahrensschritte. Die Abbildungen~\ref{fig:lpcb-1} bis \ref{fig:lpcb-9} dokumentieren die einzelnen Prozessschritte schrittweise:
 
+\begin{enumerate}
+    \item \textbf{Optische Kontrolle:} Zunächst erfolgt eine sorgfältige optische Überprüfung der gedruckten Fotoschablone auf Korrektheit und Deckungskraft (Abb.~\ref{fig:lpcb-1}).
+    \item \textbf{Belichtung:} Unter Anwendung von Schwarzlicht (UV-Strahlung) wird der Fotolack der kupferkaschierten Platine durch die Schablone hindurch belichtet, wodurch der Photoresist partiell chemisch verändert wird (Abb.~\ref{fig:lpcb-2}).
+    \item \textbf{Entwicklung:} In einem Entwicklerbad aus Natronlauge ($\text{NaOH}$) werden die belichteten Bereiche des negativen Photoresists ausgewaschen (Abb.~\ref{fig:lpcb-3}).
+    \item \textbf{Ätzprozess:} Das freigelegte Kupfer wird im Ätzbad mittels Eisen(III)-chlorid ($\text{FeCl}_3$) chemisch abgetragen, während der verbliebene Photoresist die darunterliegenden Leiterbahnen schützt (Abb.~\ref{fig:lpcb-4}).
+    \item \textbf{Reinigung I:} Die geätzte Platinengrundplatte wird gründlich mit Spiritus gereinigt, um Ätzrückstände zu neutralisieren (Abb.~\ref{fig:lpcb-5}).
+    \item \textbf{Strippen des Fotoresists:} Der verbliebene restliche Fotoresist auf den Leiterbahnen wird mechanisch mit feiner Stahlwolle entfernt (Abb.~\ref{fig:lpcb-6}).
+    \item \textbf{Flussmittelauftrag:} Zur Vermeidung von Reoxidation und zur Verbesserung der späteren Löteigenschaften wird die Platine mit einer Schutzschicht aus Flussmittel beschichtet (Abb.~\ref{fig:lpcb-7}).
+    \item \textbf{Vereinzelung:} Das Abtrennen der einzelnen Leiterplattenkonturen erfolgt präzise mittels eines Hebelschneiders (Abb.~\ref{fig:lpcb-8}).
+    \item \textbf{Finales Produkt:} Abbildung~\ref{fig:lpcb-9} zeigt die fertig produzierte Platine.
+\end{enumerate}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-optische-kontrolle.jpg}
+    \caption{Optische Kontrolle der Schablone.}
+    \label{fig:lpcb-1}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-led-beleuchtung.jpg}
+    \caption{Erstellung des Photoresist durch schwarzlichtbeleuchtung des Photolacks unter der Schablone.}
+    \label{fig:lpcb-2}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-nach-natronlauge.jpg}
+    \caption{Entfernen des negative Photoresists durch Natronlauge.}
+    \label{fig:lpcb-3}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-in-eisen3chlorid.jpg}
+    \caption{Wegätzen des Kupfers durch Eisen3Chlorid.}
+    \label{fig:lpcb-4}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-reinigung-mit-spiritus.jpg}
+    \caption{Reinigung der geätzen Leiterlpatte mit Spiritus}
+    \label{fig:lpcb-5}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-fotoresist-entfernen.jpg}
+    \caption{Entfernen des übrigen Fotoresists durch Stahlwolle.}
+    \label{fig:lpcb-6}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-auftragen-von-flussmittel.jpg}
+    \caption{Beschichtung der Leiterplatte mit Flussmittel.}
+    \label{fig:lpcb-7}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-abschneiden.jpg}
+    \caption{Abtrennen der einzelnen Leiterplatten durch Hebelschneider.}
+    \label{fig:lpcb-8}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.45\textwidth]{./figures/lpcb-fertig.jpg}
+    \caption{Fertig produzierte Leiterplatte.}
+    \label{fig:lpcb-9}
+\end{figure}
+\subsection{Vierleiter-Messung zur Widerstandsbestimmung}
+Zur exakten Ermittlung des realen Leiterbahnwiderstandes wird eine messtechnische Charakterisierung durch Erfassung einer $U$-$I$-Kennlinie durchgeführt. Zur Vorbereitung der Messung wurden zunächst Lötösen an den dafür vorgesehenen vier Kontaktpads aufgelötet. Abbildung~\ref{fig:vierleiter} stellt den Messaufbau dar.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./figures/lpcb-vier-leiter-messung.jpg}
+    \caption{Bemessung des Leiterbahnwiderstandes.}
+    \label{fig:vierleiter}
+\end{figure}
+
+\subsubsection{Notwendigkeit und Funktionsprinzip der Vierleitermessung (Kelvin-Messung)}
+Bei der Widerstandsbestimmung niederohmiger Bauteile oder langer dünner Leiterbahnen führt eine herkömmliche Zweileitermessung zu signifikanten Messfehlern. Der Grund hierfür liegt darin, dass bei einer Zweileitermessung die Widerstände der Messleitungen sowie die Kontaktwiderstände an den Verbindungsstellen in Reihe zum eigentlichen Prüfwiderstand $R_x$ liegen. Das Messgerät erfasst die Summe aus Prüflingswiderstand, Leitungswiderständen und Kontaktwiderständen.
+
+Die Vierleitermessung (Kelvin-Messung) eliminiert diesen systematischen Messfehler, indem der Strompfad vollständig vom Spannungspfad entkoppelt wird:
+\begin{itemize}
+    \item \textbf{Strompfad (Force):} Über zwei äußere Leitungen wird von einer Laborstromquelle ein definierter Prüfstrom $I$ durch den Leiterbahnwiderstand eingeprägt.
+    \item \textbf{Spannungspfad (Sense):} Über zwei separate, innere Messleitungen wird der Spannungsabfall $U$ direkt an den Grenzen der Leiterbahn abgegriffen.
+\end{itemize}
+Da das nachgeschaltete Voltmeter einen extrem hohen Innenwiderstand aufweist (im Mega- bis Gigaohm-Bereich), ist der Stromfluss über die Spannungssensleitungen nahezu null ($I_{\text{Sense}} \approx 0$). Infolgedessen fällt an den Zuleitungen und Kontaktwiderständen des Spannungspfades keine nennenswerte Spannung ab ($U_{\text{Kontakt}} = I_{\text{Sense}} \cdot R_{\text{Kontakt}} \approx 0$). Das Voltmeter misst somit ausschließlich den tatsächlichen Spannungsabfall $U$ über der Leiterbahn. 
+
+Durch Variation des eingeprägten Stroms $I$ und Aufzeichnung der zugehörigen Spannung $U$ entsteht eine lineare $U$-$I$-Kennlinie. Aus deren Steigung lässt sich nach dem Ohmschen Gesetz ($R = \frac{\Delta U}{\Delta I}$) der reine Leiterbahnwiderstand hochpräzise und unabhängig von Kontakt- und Zuleitungseinflüssen bestimmen.
+
+\chapter{KiCad als Werkzeug für die Entwicklung einer Taschenlampe}
+\label{sec:taschenlampe}
+Die Entwicklung der Taschenlampe wurde in KiCad in zwei wesentlichen Schritten durchgeführt: zunächst im Schaltplan und anschließend im Layout. Für die Planung und Umsetzung eines PCB-Designs ist es hilfreich, die grundlegenden Zusammenhänge des Werkzeugs zu verstehen. Eine detaillierte Anleitung zu einzelnen Funktionen findet man zwar im Internet in ausreichendem Maße, doch ein übergeordnetes Verständnis erleichtert die Nutzung deutlich und hilft, Fehler frühzeitig zu vermeiden.
+
+\section{Ausführliche KiCad-Einführung anhand einer Taschenlampe}
+KiCad gliedert sich in verschiedene Arbeitsbereiche, die jeweils einen bestimmten Teil des Designprozesses abdecken. Der Schaltplan beschreibt die elektrische Funktion der Schaltung, während das Layout die physische Realisierung auf der Leiterplatte darstellt. Beide Ebenen sind eng miteinander verknüpft, sodass Änderungen im Schaltplan direkt in das Layout übertragen werden können.
+\subsection{Symbol-Editor und Footprint-Editor}
+Um diesen Prozess zu automatisieren und Fehlschaltungen zu vermeiden, verwendet KiCad zwei zentrale Bibliotheks-Werkzeuge:
+
+\begin{enumerate}
+    \item \textbf{Symbol-Editor:} Dient der Definition des logischen Bauteilsymbols mit seinen Pins und elektrischen Eigenschaften für den Schaltplan.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{./figures/symbol-editor.jpg}
+        \caption{Kicad Symbol Editor mit selbsterstellter Bibliothek und Symbolen mit Datenblattverbindung.}
+        \label{fig:symbol-editor}
+    \end{figure}
+    Wie in Abbildung~\ref{fig:symbol-editor} dargestellt, ermöglicht der Symbol-Editor die Einbindung individueller Bibliotheken sowie das Verknüpfen relevanter Datenblätter.
+
+    \item \textbf{Footprint-Editor:} Dient der geometrischen Definition des physischen Anschlussbildes (Pad-Layout), auf das das Bauteil später gelötet wird.
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.7\textwidth]{./figures/footprint-editor-und-zuweisung.jpg}
+        \caption{selbsterstellte Bibliothek mit Footprint und Footprint zuweisung zu Symbol.}
+        \label{fig:footprint-editor}
+    \end{figure}
+    Durch die explizite Zuweisung von Footprints zu den jeweiligen Schaltplansymbolen (Abbildung~\ref{fig:footprint-editor}) werden beim Übergang ins Layout alle benötigten Bauformen mittels \textit{Forward Annotation} automatisch geladen und die logischen Netzverbindungen (Ratsnest) generiert.
+\end{enumerate}
+
+\subsection{DRC, Stack-Up und Signaleinstellungen}
+Über den Stack-Up-Editor (Konfiguration des Lagenaufbaus) sowie die Definition globaler Signalklassen (Net Classes) im Schaltplan werden Parameter wie minimale Leiterbahnbreiten und Mindestabstände festgelegt. Während der Layoutphase überprüft der \textit{Design Rule Checker} (DRC) kontinuierlich, ob alle elektrischen Verbindungen normgerecht geroutet sind und keine Abstandsverletzungen vorliegen. Dies garantiert die elektrische Funktion und die Herstellbarkeit der Leiterplatte.
+
+\subsection{Schaltplanentwicklung der Taschenlampe}
+Die primäre Herausforderung bei der Erstellung des Schaltplans liegt in der korrekten Umsetzung der Schaltungslogik, einer gründlichen Bauteilrecherche sowie der exakten Abstimmung aller Komponenten hinsichtlich Betriebsspannung, maximaler Strombelastbarkeit und Verlustleistung. Abbildung~\ref{fig:schaltplan-taschenlampe} zeigt den fertiggestellten Schaltplan der Taschenlampe.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./figures/schaltplan-taschenlampe.jpg}
+    \caption{Schaltplan der Taschenlampe.}
+    \label{fig:schaltplan-taschenlampe}
+\end{figure}
+
+\subsection{Layoutgestaltung der Taschenlampe}
+Die Besonderheit der Layoutgestaltung besteht in der sinnvollen räumlichen Anordnung von Funktionsgruppen, dem Entflechten der Signalleitungen über mehrere Lagen unter Zuhilfenahme von Durchkontaktierungen (Vias) sowie der Antizipation des physischen Endprodukts. Hierbei müssen Bestückungsprozesse, thermische Verlustleistung, Gehäuseanforderungen und elektromagnetische Wechselwirkungen berücksichtigt werden.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{./figures/layout-taschenlampe.jpg}
+    \caption{Layout der Taschenlampe.}
+    \label{fig:layout-taschenlampe}
+\end{figure}
+
+Beim Design des Taschenlampen-Layouts (Abbildung~\ref{fig:layout-taschenlampe}) wurden folgende spezifische Entwurfsentscheidungen umgesetzt:
+\begin{itemize}
+    \item \textbf{Masseflächen (GND Planes):} Beidseitige Ausführung flächiger Kupferzonen auf der Vorder- und Rückseite zur Impedanzminimierung und verbesserten Entkopplung.
+    \item \textbf{Kupfer-/Lötstopp-Beschriftung:} Verzicht auf den klassischen Bestückungsdruck (Silkscreen); stattdessen wurden Texte direkt durch Aussparungen in der Lötstoppmaske und Kupferbearbeitung realisiert.
+    \item \textbf{Befestigungsbohrungen:} Gezielte Platzierung von Montagebohrungen zur mechanischen Fixierung der Platine im Gehäuse.
+    \item \textbf{Ergonomische Bauteilplatzierung:} 
+    \begin{itemize}
+        \item Anordnung des Halters für die Batterie an einem Platinenende, um einen unkomplizierten Einzelwechsel zu ermöglichen.
+        \item Positionierung der LED am gegenüberliegenden Ende ohne störende Hindernisse im Abstrahlbereich sowie Bereitstellung von Freiraum für die Montage eines Lampenschirms/Reflektors.
+        \item Anordnung des Schalters auf optimaler Daumenhöhe bei natürlicher Handhabung des Produkts.
+   \end{itemize}
+\end{itemize}
+\subsection{3D-Viewer, Design-Check und Export}
+Der integrierte 3D-Viewer dient der Überprüfung räumlicher Randbedingungen und Kollisionen mit mechanischen Bauteilen.
+
+Der 3D-Viewer von KiCad war besonders hilfreich, um räumliche Einschränkungen frühzeitig zu erkennen. Dadurch konnte das Produkt bereits vor der Fertigung besser visualisiert werden. Auch der Export der Daten war ein wichtiger Schritt, da die Leiterplatte in mehreren Lagen gefertigt wird und die Vias über Drill-Dateien erzeugt werden. Für die spätere Fertigung wurden deshalb die Kupferlagen und Drill-Dateien getrennt exportiert. Die resultierenden Daten konnten anschließend im Gerber-Viewer geprüft werden, um mögliche Fehler noch vor der Produktion zu erkennen. 
+
+Der physikalische Fertigungsprozess einer Leiterplatte erfolgt schichtweise, wobei Durchkontaktierungen abschließend über Bohrdaten gebohrt werden. Dementsprechend werden beim Fertigungsexport die einzelnen Kupfer-, Lötstopp- und Bestückungslagen als standardisierte Gerber-Dateien sowie die Bohrkoordinaten als separate Drill-Dateien generiert. Vor der Freigabe können diese Fertigungsdaten im Gerber-Viewer einer abschließenden Validierung unterzogen werden.
+
+\section{Kapitel 3: Gehäusekonstruktion in FreeCAD}
+
+\subsection{Einführung und Methodik}
+Die gefertigte Taschenlampen-Leiterplatte erfordert ein passgenaues Gehäuse. Eine effiziente und moderne Fertigungsmethode stellt hierfür der 3D-Druck dar. Analog zur EDA-Software stehen auch für CAD-Systeme detaillierte Funktionsanleitungen bereit. Nachfolgend stehen daher die Konstruktionsmethodik, das Werkzeugverständnis und praxiserprobte Konstruktionsansätze im Vordergrund.
+
+Das Arbeiten im 3D-CAD unterscheidet sich grundlegend vom reinen 2D-Zeichnen und ähnelt in gewisser Weise der Bildhauerei beziehungsweise Tonarbeit: Ausgehend von zweidimensionalen Skizzen werden dreidimensionale Grundkörper erzeugt, die anschließend durch modifizierende Operationen (Extrusion, Ausschnitt, Verrundung) iterativ geformt werden.
+
+\subsection{Import der Leiterplattendaten}
+Obwohl der Modellierungsprozess auf 2D-Skizzen basiert, erfordert eine exakte Gehäusepassform die Kenntnis der realen Platinenabmessungen. Über den Menüpfad \texttt{Datei $\rightarrow$ Importieren} lässt sich das KiCad-Projekt beziehungsweise die Platine als STEP-Modell direkt in FreeCAD einbinden, womit präzise Referenzkanten für die Gehäuseskizzen zur Verfügung stehen.
+
+\subsection{Skizzenerstellung (Sketcher)}
+Skizzen werden mithilfe grundlegender Geometrie-Werkzeuge (Linien, Punkte, Bögen) unter Zuhilfenahme von Konstruktionslinien aufgebaut. Für eine stabile Geometrie muss jede Skizze vollständig bestimmt (eindeutig definiert) sein. In FreeCAD wird dies farblich signalisiert: Konstruktionslinien erscheinen grün, während vollständig bestimmte Geometrielinien hellblau hervorgehoben werden.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./figures/skizze-symmetrie.jpg}
+    \caption{Skizze der Frontansicht des Gehäuses mit Symmetrielinie gezeichnet.}
+    \label{fig:skizze-symmetrie}
+\end{figure}
+
+\paragraph{Erfahrungsbericht des Autors:}
+In einer frühen Projektphase musste eine vollständige Zeichnung neu aufgebaut werden, da erst gegen Ende auffiel, dass die Skizze nicht eindeutig bestimmt war. Ursache hierfür war das fehlerhafte Verbinden von Linien: Anstatt einen bestehenden Endpunkt auszuwählen, wurde versehentlich ein neuer Punkt direkt daneben gesetzt. Dieser Fehler lässt sich vermeiden, indem konsequent darauf geachtet wird, dass ein Punkt bei der Anwahl seine Farbe ändert, und indem Geometriebedingungen sowie Bemaßungen fortlaufend angewendet werden.
+
+Zur Effizienzsteigerung sollte konsequent von Symmetrieoptionen Gebrauch gemacht werden. Abbildung~\ref{fig:skizze-symmetrie} zeigt die Skizze der Gehäusefront unter Nutzung einer zentralen Symmetrielinie. Symmetrieeigenschaften lassen sich dabei sowohl in der 2D-Skizze als auch bei anschließenden 3D-Extrusionen nutzen.
+
+\subsection{3D-Extrusion und mehrdimensionale Modellierung}
+Aus einer einzelnen, durchdachten Basisskizze lassen sich mehrere 3D-Features (Extrusionen, Cut-outs) ableiten. 
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./figures/housing-two-extrudes.jpg}
+    \caption{FreeCad Taschenlampe Gehäuse mit bestehender grauen Front und grün markierten Extrude als Wand basierend auf der selben Skizze.}
+    \label{fig:housing-extrudes}
+\end{figure}
+
+Abbildung~\ref{fig:housing-extrudes} illustriert dies am Gehäuse der Taschenlampe: Auf Basis derselben Skizze wurde sowohl die Frontplatte (grau) als auch die umlaufende Wandung (grün hervorgehoben) generiert.
+
+3D-Konstruktion versteht sich als mehrdimensionaler, fortlaufender Prozess. Ein veranschaulichendes Beispiel bildet das Aufbauen und spätere Nachbearbeiten von Gehäusekanten:
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{./figures/lid-extrude.jpg}
+    \caption{Quadratische Verstärkung der Kante.}
+    \label{fig:lid-extrude}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.48\textwidth]{./figures/lid-cut-out.jpg}
+    \caption{Abbrundung der Verstärkung}
+    \label{fig:lid-cut-out}
+\end{figure}
+
+Ausgehend von einer bestehenden Skizze wird zunächst eine quadratische Eckverstärkung extruiert (Abbildung~\ref{fig:lid-extrude}). In einem darauffolgenden Schritt wird von der Seite her ein Cut-out durchgeführt, um die Verstärkung abzurunden (Abbildung~\ref{fig:lid-cut-out}).
+
+\subsection{Baugruppe (Assembly) und Fehlerkorrektur}
+Die Assembly-Umgebung von FreeCAD bietet wesentliche Vorteile für die Qualitätskontrolle:
+\begin{itemize}
+    \item Gleichzeitige Visualisierung mehrerer Einzelkörper und Baugruppen im Raum.
+    \item Definition von Verknüpfungen und geometrischen Abhängigkeiten zwischen den Körpern.
+    \item Durchführung einer visuellen Kollisions- und Passformprüfung.
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./figures/assembly.jpg}
+    \caption{Assembly der Taschenlampe.}
+    \label{fig:assembly}
+\end{figure}
+
+Im konkreten Projektverlauf machte die visuelle Kontrolle innerhalb der Baugruppe (Abbildung~\ref{fig:assembly}) auf einen kritischen Fehler aufmerksam: Die Masterskizze des Gehäuses war aufgrund eines Vermessungsfehlers in der Höhe zu groß dimensioniert worden. Durch die Baugruppenprüfung konnte der Fehler vor der physischen Prototypenfertigung identifiziert und behoben werden. In Anlehnung an die in der Fertigungstechnik etablierte \textit{Zehnerregel der Fehlerkosten} (Rule of Ten), nach der sich die Fehlerbehebungskosten mit jeder Wertschöpfungsstufe um den Faktor 10 erhöhen, verhinderte diese frühzeitige Korrektur unnötige Kosten und Materialverschwendung.
+
+\section{Fazit}
+Das Praktikum im Sommersemester 2026 bot eine wertvolle Ergänzung zu den Vorlesungen in \textit{Einführung in die Aufbau- und Verbindungstechnik} (AVT) sowie \textit{Leiterplattentechnik} (LPT P). Über die im Bericht behandelten Schwerpunkte hinaus vermittelten die Lehrveranstaltungen wesentliche theoretische Grundlagen zu weiteren AVT-Themen – wie beispielsweise SMD-Bestückungs- und Reflow-Lötverfahren, Dick- und Dünnschichttechnologien, Zuverlässigkeits- und Fehlermechanismen sowie thermischem Management und Materialeigenschaften komplexer Substrate.
+
+Das Sammeln direkter praktischer Laborerfahrung erwies sich als essenziell, um ein fundiertes Verständnis für fertigungstechnische Toleranzen, Materialverhalten und reale Entwurfsanforderungen zu entwickeln. Es war ein großer Erfolg, die erworbenen interdisziplinären Kompetenzen – von der mathematischen Dimensionierung über das EDA-Layout bis hin zur mechanischen Auslegung der Einzelteile (siehe Abbildung~\ref{fig:bauteile}) – in einem einzigen, geschlossenen Projekt zu bündeln. Das Ergebnis ist ein voll funktionsfähiges Endprodukt (siehe Abbildung~\ref{fig:taschenlampe}), das den erfolgreichen Transfer von theoretischem Vorlesungswissen in die Praxis demonstriert.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./figures/bauteile.jpg}
+    \caption{Gegenüberstellung der einzelnen Systemkomponenten und Teilgewerke.}
+    \label{fig:bauteile}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./figures/taschenlampe.jpg}
+    \caption{Vollständig montiertes und funktionsfähiges Endprodukt.}
+    \label{fig:taschenlampe}
+\end{figure}
